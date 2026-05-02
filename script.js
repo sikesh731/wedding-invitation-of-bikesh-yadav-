@@ -1,24 +1,26 @@
-// Name from URL
+// Name system
 const params = new URLSearchParams(window.location.search);
 let name = params.get("name") || "Dear Guest";
 
-// Text
-document.getElementById("welcome").innerText = "Namaste " + name + " ji 🙏";
+document.getElementById("welcome").innerText =
+  "Namaste " + name + " ji 🙏";
 
 document.getElementById("message").innerText =
-  "Hamro bibaha ma tapai lai hridaya dekhi nimantran cha. Kripaya aaera hamilai ashirwad dinu hola.";
+  "Hamro bibaha ma tapai lai hridaya dekhi nimantran cha.";
 
-// Start
+// Start Experience
 function startExperience() {
+  document.getElementById("intro").style.display = "none";
+  document.getElementById("mainContent").style.display = "flex";
+
   let music = document.getElementById("bgMusic");
-  music.volume = 0.2; // यहाँ adjust गर
+  music.volume = 0.4;
   music.play();
 
   document.getElementById("voice").play();
 }
 
-
-// 📸 Slideshow
+// Slideshow
 let images = ["photo1.jpeg", "photo2.jpeg", "photo3.jpeg"];
 let index = 0;
 
@@ -27,16 +29,15 @@ setInterval(() => {
   document.getElementById("slide").src = images[index];
 }, 3000);
 
-
-// ===== ULTRA PREMIUM EFFECT =====
+// Ultra Effects
 const canvas = document.getElementById("effects");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
+let symbols = ["🌸","💖","✨"];
 let particles = [];
-const symbols = ["🌸", "💖", "✨"];
 
 for (let i = 0; i < 60; i++) {
   particles.push({
@@ -44,29 +45,23 @@ for (let i = 0; i < 60; i++) {
     y: Math.random() * canvas.height,
     size: Math.random() * 20 + 10,
     speed: Math.random() * 1 + 0.5,
-    symbol: symbols[Math.floor(Math.random() * symbols.length)]
+    symbol: symbols[Math.floor(Math.random()*symbols.length)]
   });
 }
 
-function drawEffects() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+function draw() {
+  ctx.clearRect(0,0,canvas.width,canvas.height);
 
-  particles.forEach(p => {
+  particles.forEach(p=>{
     ctx.font = p.size + "px serif";
-    ctx.fillText(p.symbol, p.x, p.y);
+    ctx.fillText(p.symbol,p.x,p.y);
 
     p.y += p.speed;
-
-    if (p.y > canvas.height) {
+    if(p.y > canvas.height){
       p.y = -20;
-      p.x = Math.random() * canvas.width;
+      p.x = Math.random()*canvas.width;
     }
   });
 }
 
-setInterval(drawEffects, 30);
-
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+setInterval(draw,30);

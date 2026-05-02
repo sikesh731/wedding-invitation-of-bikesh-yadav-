@@ -7,22 +7,27 @@
 </head>
 <body>
 
-<div class="overlay">
+<!-- 🎬 Intro Screen -->
+<div id="intro">
+  <h1>💖 Wedding Invitation 💖</h1>
+  <button onclick="startExperience()">Tap to Open</button>
+</div>
+
+<!-- 💌 Main Card -->
+<div class="overlay" id="mainContent" style="display:none;">
   <div class="card">
 
     <h1 id="welcome"></h1>
 
-    <h2 class="names">💍 Bikesh Yadav ❤️ barsa kumari Yadav 💍</h2>
+    <h2 class="names glow">💍 Bikesh Yadav ❤️ Barsa Kumari Yadav 💍</h2>
 
-    <p class="date">📅 2083/01/30</p>
+    <p class="date">📅 2083 बैशाख 30 गते</p>
 
     <p id="message"></p>
 
     <div class="slideshow">
       <img id="slide" src="photo1.jpeg">
     </div>
-
-    <button onclick="startExperience()">💖 Open Invitation</button>
 
   </div>
 </div>
